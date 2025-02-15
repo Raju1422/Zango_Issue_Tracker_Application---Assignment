@@ -152,3 +152,5 @@ password: Sanju@169
 ### NOTE
 
 - The application has been **Dockerized**, but currently, the **Celery container is throwing an error**.
+### Complete working of IssueTrackerApplication 
+https://github.com/user-attachments/assets/2a99318e-0be1-47e7-a7fd-d7555d5b801b
