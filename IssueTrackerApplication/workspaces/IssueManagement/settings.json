@@ -33,6 +33,11 @@
             "re_path": "^workflow/",
             "package": "workflow",
             "url": "urls"
+        },
+        {
+            "re_path": "^communication/",
+            "package": "communication",
+            "url": "urls"
         }
     ],
     "app_name": "IssueManagement",

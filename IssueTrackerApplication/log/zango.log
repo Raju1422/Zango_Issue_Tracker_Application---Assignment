@@ -1741,3 +1741,379 @@ TypeError: BaseForm.__init__() got an unexpected keyword argument 'instance'
 [IssueManagement:issuemanagement.com][13/Feb/2025 22:26:12] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/?pk=4&action=fetch_item_details&view=detail HTTP/1.1" 200 4530 
 [IssueManagement:issuemanagement.com][13/Feb/2025 22:26:12] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Not Found: /issues/all/null/ 
 [IssueManagement:issuemanagement.com][13/Feb/2025 22:26:12] WARNING [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/null/ HTTP/1.1" 404 3554 
+[public:][14/Feb/2025 11:47:00] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][14/Feb/2025 12:03:04] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][14/Feb/2025 14:53:18] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][14/Feb/2025 21:44:25] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][14/Feb/2025 21:53:27] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][14/Feb/2025 22:17:12] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][14/Feb/2025 22:18:07] ERROR [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Internal Server Error: / ['  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner\n    response = get_response(request)\n               ^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 69, in __call__\n    tenant = self.get_tenant(domain_model, hostname)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 51, in get_tenant\n    domain = domain_model.objects.select_related("tenant").get(domain=hostname)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 633, in get\n    num = len(clone)\n          ^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__\n    self._fetch_all()\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all\n    self._result_cache = list(self._iterable_class(self))\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__\n    results = compiler.execute_sql(\n              ^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql\n    cursor.execute(sql, params)\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute\n    return super().execute(sql, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute\n    return self._execute_with_wrappers(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers\n    return executor(sql, params, many, context)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute\n    with self.db.wrap_database_errors:\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__\n    raise dj_exc_value.with_traceback(traceback) from exc_value\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute\n    return self.cursor.execute(sql, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n']
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "tenancy_domain" does not exist
+LINE 1: ...onfig", "tenancy_tenantmodel"."app_template" FROM "tenancy_d...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 69, in __call__
+    tenant = self.get_tenant(domain_model, hostname)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 51, in get_tenant
+    domain = domain_model.objects.select_related("tenant").get(domain=hostname)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 633, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "tenancy_domain" does not exist
+LINE 1: ...onfig", "tenancy_tenantmodel"."app_template" FROM "tenancy_d...
+                                                             ^
+
+[public:][14/Feb/2025 22:18:07] ERROR [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET / HTTP/1.1" 500 148313 
+[public:][14/Feb/2025 22:18:07] ERROR [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Internal Server Error: /favicon.ico ['  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner\n    response = get_response(request)\n               ^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 69, in __call__\n    tenant = self.get_tenant(domain_model, hostname)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 51, in get_tenant\n    domain = domain_model.objects.select_related("tenant").get(domain=hostname)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 633, in get\n    num = len(clone)\n          ^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__\n    self._fetch_all()\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all\n    self._result_cache = list(self._iterable_class(self))\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__\n    results = compiler.execute_sql(\n              ^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql\n    cursor.execute(sql, params)\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute\n    return super().execute(sql, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute\n    return self._execute_with_wrappers(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers\n    return executor(sql, params, many, context)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute\n    with self.db.wrap_database_errors:\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__\n    raise dj_exc_value.with_traceback(traceback) from exc_value\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute\n    return self.cursor.execute(sql, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n']
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "tenancy_domain" does not exist
+LINE 1: ...onfig", "tenancy_tenantmodel"."app_template" FROM "tenancy_d...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 69, in __call__
+    tenant = self.get_tenant(domain_model, hostname)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 51, in get_tenant
+    domain = domain_model.objects.select_related("tenant").get(domain=hostname)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 633, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "tenancy_domain" does not exist
+LINE 1: ...onfig", "tenancy_tenantmodel"."app_template" FROM "tenancy_d...
+                                                             ^
+
+[public:][14/Feb/2025 22:18:07] ERROR [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /favicon.ico HTTP/1.1" 500 148181 
+[public:][14/Feb/2025 22:18:25] ERROR [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Internal Server Error: /platform/ ['  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner\n    response = get_response(request)\n               ^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 69, in __call__\n    tenant = self.get_tenant(domain_model, hostname)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 51, in get_tenant\n    domain = domain_model.objects.select_related("tenant").get(domain=hostname)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 633, in get\n    num = len(clone)\n          ^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__\n    self._fetch_all()\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all\n    self._result_cache = list(self._iterable_class(self))\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__\n    results = compiler.execute_sql(\n              ^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql\n    cursor.execute(sql, params)\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute\n    return super().execute(sql, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute\n    return self._execute_with_wrappers(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers\n    return executor(sql, params, many, context)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute\n    with self.db.wrap_database_errors:\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__\n    raise dj_exc_value.with_traceback(traceback) from exc_value\n', '  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute\n    return self.cursor.execute(sql, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n']
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "tenancy_domain" does not exist
+LINE 1: ...onfig", "tenancy_tenantmodel"."app_template" FROM "tenancy_d...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 69, in __call__
+    tenant = self.get_tenant(domain_model, hostname)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/zango/middleware/tenant.py", line 51, in get_tenant
+    domain = domain_model.objects.select_related("tenant").get(domain=hostname)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 633, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "tenancy_domain" does not exist
+LINE 1: ...onfig", "tenancy_tenantmodel"."app_template" FROM "tenancy_d...
+                                                             ^
+
+[public:][14/Feb/2025 22:18:25] ERROR [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 500 148394 
+[public:][14/Feb/2025 22:18:51] INFO [Zango/env/lib/python3.10/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][14/Feb/2025 22:19:10] INFO [Zango/env/lib/python3.10/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:localhost][14/Feb/2025 22:19:12] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 302 0 
+[public:localhost][14/Feb/2025 22:19:12] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /auth/login/?next=/platform/ HTTP/1.1" 200 4371 
+[public:localhost][14/Feb/2025 22:19:12] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/app_panel/images/zangoLogo.svg HTTP/1.1" 200 3903 
+[public:][14/Feb/2025 22:19:12] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/app_panel/css/styles.css HTTP/1.1" 304 0 
+[public:][14/Feb/2025 22:20:33] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][14/Feb/2025 22:35:15] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][14/Feb/2025 22:35:40] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /auth/login/ 
+[public:][14/Feb/2025 22:35:40] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /auth/login/?next=/platform/ HTTP/1.1" 404 1915 
+[public:][14/Feb/2025 22:35:51] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /platform/ 
+[public:][14/Feb/2025 22:35:51] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 404 1895 
+[public:][14/Feb/2025 22:36:08] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: / 
+[public:][14/Feb/2025 22:36:08] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET / HTTP/1.1" 404 1873 
+[public:][14/Feb/2025 22:36:08] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /favicon.ico 
+[public:][14/Feb/2025 22:36:08] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /favicon.ico HTTP/1.1" 404 1776 
+[public:][14/Feb/2025 22:36:17] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /platform/ 
+[public:][14/Feb/2025 22:36:17] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 404 1891 
+[public:][14/Feb/2025 22:36:26] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /platform/ 
+[public:][14/Feb/2025 22:36:26] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 404 1891 
+[public:][14/Feb/2025 22:36:26] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /platform/ 
+[public:][14/Feb/2025 22:36:26] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 404 1891 
+[public:][14/Feb/2025 22:37:04] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /platform/ 
+[public:][14/Feb/2025 22:37:04] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 404 1891 
+[public:][14/Feb/2025 22:37:09] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: / 
+[public:][14/Feb/2025 22:37:09] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET / HTTP/1.1" 404 1877 
+[public:][14/Feb/2025 22:37:17] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /platform/ 
+[public:][14/Feb/2025 22:37:17] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 404 1895 
+[public:][14/Feb/2025 22:44:02] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /platform/ 
+[public:][14/Feb/2025 22:44:02] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 404 1895 
+[public:][14/Feb/2025 22:44:37] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /platform/ 
+[public:][14/Feb/2025 22:44:37] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 404 1895 
+[public:][14/Feb/2025 22:48:42] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][14/Feb/2025 23:05:43] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][14/Feb/2025 23:24:59] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][15/Feb/2025 10:36:57] INFO [Zango/env/lib/python3.10/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][15/Feb/2025 10:37:43] INFO [Zango/env/lib/python3.10/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:localhost][15/Feb/2025 10:37:50] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Not Found: / 
+[public:localhost][15/Feb/2025 10:37:50] WARNING [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET / HTTP/1.1" 404 2749 
+[public:localhost][15/Feb/2025 10:37:50] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Not Found: /favicon.ico 
+[public:localhost][15/Feb/2025 10:37:55] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 302 0 
+[public:localhost][15/Feb/2025 10:37:55] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /auth/login/?next=/platform/ HTTP/1.1" 200 4371 
+[public:localhost][15/Feb/2025 10:37:55] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/app_panel/images/zangoLogo.svg HTTP/1.1" 200 3903 
+[public:][15/Feb/2025 10:37:55] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/app_panel/css/styles.css HTTP/1.1" 200 10248 
+[public:localhost][15/Feb/2025 10:38:09] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "POST /auth/login/?next=/platform/ HTTP/1.1" 302 0 
+[public:localhost][15/Feb/2025 10:38:09] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform HTTP/1.1" 301 0 
+[public:localhost][15/Feb/2025 10:38:09] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 200 1624 
+[public:localhost][15/Feb/2025 10:38:09] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/session_security/style.css HTTP/1.1" 200 512 
+[public:][15/Feb/2025 10:38:09] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/app_panel/js/build.1736323994451.min.js HTTP/1.1" 304 0 
+[public:][15/Feb/2025 10:38:09] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/session_security/script.js HTTP/1.1" 200 5899 
+[public:localhost][15/Feb/2025 10:38:09] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/js/jquery/3.7.1/jquery.min.js HTTP/1.1" 200 87533 
+[public:localhost][15/Feb/2025 10:38:12] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/auth/app-initalization-details/ HTTP/1.1" 200 285 
+[public:localhost][15/Feb/2025 10:38:12] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/apps/ HTTP/1.1" 200 875 
+[public:localhost][15/Feb/2025 10:38:13] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96?include_dropdown_options=true HTTP/1.1" 301 0 
+[public:localhost][15/Feb/2025 10:38:13] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96/?include_dropdown_options=true HTTP/1.1" 200 33497 
+[public:localhost][15/Feb/2025 10:38:13] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96/?include_dropdown_options=true HTTP/1.1" 200 33497 
+[public:localhost][15/Feb/2025 10:38:15] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "POST /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96/code-assist/conversation/ HTTP/1.1" 200 52 
+[public:][15/Feb/2025 11:17:55] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][15/Feb/2025 11:29:12] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][15/Feb/2025 11:29:46] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: / 
+[public:][15/Feb/2025 11:29:46] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET / HTTP/1.1" 404 1877 
+[public:][15/Feb/2025 11:29:46] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /favicon.ico 
+[public:][15/Feb/2025 11:29:46] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /favicon.ico HTTP/1.1" 404 1780 
+[public:][15/Feb/2025 11:29:55] WARNING [/usr/local/lib/python3.11/site-packages/django/utils/log.py:log_response:241] Not Found: /platform 
+[public:][15/Feb/2025 11:29:55] WARNING [/usr/local/lib/python3.11/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform HTTP/1.1" 404 1774 
+[public:][15/Feb/2025 12:05:23] INFO [/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][15/Feb/2025 12:22:33] INFO [Zango/env/lib/python3.10/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][15/Feb/2025 12:22:53] INFO [Zango/env/lib/python3.10/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[public:][15/Feb/2025 12:23:11] INFO [Zango/env/lib/python3.10/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:24:38] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/dashboard/email HTTP/1.1" 301 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:24:38] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Not Found: /communication/dashboard/email/ 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:24:38] WARNING [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/dashboard/email/ HTTP/1.1" 404 3596 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:24:44] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Not Found: /communication/dashboard/email/ 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:24:44] WARNING [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/dashboard/email/ HTTP/1.1" 404 3596 
+[public:localhost][15/Feb/2025 12:25:10] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 302 0 
+[public:localhost][15/Feb/2025 12:25:10] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /auth/login/?next=/platform/ HTTP/1.1" 200 4371 
+[public:localhost][15/Feb/2025 12:25:11] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/app_panel/images/zangoLogo.svg HTTP/1.1" 200 3903 
+[public:localhost][15/Feb/2025 12:25:19] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "POST /auth/login/?next=/platform/ HTTP/1.1" 302 0 
+[public:localhost][15/Feb/2025 12:25:19] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform HTTP/1.1" 301 0 
+[public:localhost][15/Feb/2025 12:25:19] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /platform/ HTTP/1.1" 200 1624 
+[public:localhost][15/Feb/2025 12:25:22] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/auth/app-initalization-details/ HTTP/1.1" 200 285 
+[public:localhost][15/Feb/2025 12:25:22] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/apps/ HTTP/1.1" 200 875 
+[public:localhost][15/Feb/2025 12:25:24] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96?include_dropdown_options=true HTTP/1.1" 301 0 
+[public:localhost][15/Feb/2025 12:25:24] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96/?include_dropdown_options=true HTTP/1.1" 200 33497 
+[public:localhost][15/Feb/2025 12:25:24] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96/?include_dropdown_options=true HTTP/1.1" 200 33497 
+[public:localhost][15/Feb/2025 12:25:26] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "POST /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96/code-assist/conversation/ HTTP/1.1" 200 52 
+[IssueManagement:None][15/Feb/2025 12:25:35] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96/packages/?page=1&page_size=10&include_dropdown_options=true&search= HTTP/1.1" 200 998 
+[IssueManagement:None][15/Feb/2025 12:25:47] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "POST /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96/packages/?action=install HTTP/1.1" 200 63 
+[IssueManagement:None][15/Feb/2025 12:25:51] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96/packages/?page=1&page_size=10&include_dropdown_options=true&search= HTTP/1.1" 200 1138 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:01] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/dashboard/email/ HTTP/1.1" 302 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:01] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /login/ HTTP/1.1" 200 8130 
+[public:][15/Feb/2025 12:26:01] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/login/css/styles.css HTTP/1.1" 200 3253 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:01] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/login/css/login_page.css HTTP/1.1" 200 170745 
+[public:][15/Feb/2025 12:26:01] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/login/js/login.js HTTP/1.1" 200 2429 
+[public:][15/Feb/2025 12:26:01] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/login/js/common.min.js HTTP/1.1" 200 335030 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:02] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /login/None HTTP/1.1" 301 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:02] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Not Found: /login/None/ 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:02] WARNING [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /login/None/ HTTP/1.1" 404 3539 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:24] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "POST /login/ HTTP/1.1" 302 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:24] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/ HTTP/1.1" 200 171953 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:24] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/frame/js/frame.1.0.0.min.js HTTP/1.1" 200 169587 
+[public:][15/Feb/2025 12:26:24] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/session_security/style.css HTTP/1.1" 200 512 
+[public:][15/Feb/2025 12:26:24] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/crud/css/style.css HTTP/1.1" 200 44555 
+[public:][15/Feb/2025 12:26:24] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/session_security/script.js HTTP/1.1" 304 0 
+[public:][15/Feb/2025 12:26:24] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/crud/js/zfrom_lib.v1.0.38.min.js HTTP/1.1" 200 2817557 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:24] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/?draw=1&columns%5B0%5D%5Bdata%5D=id&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=title&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=description&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=status&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=false&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B4%5D%5Bdata%5D=assignee&columns%5B4%5D%5Bname%5D=&columns%5B4%5D%5Bsearchable%5D=true&columns%5B4%5D%5Borderable%5D=true&columns%5B4%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B4%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B5%5D%5Bdata%5D=&columns%5B5%5D%5Bname%5D=&columns%5B5%5D%5Bsearchable%5D=true&columns%5B5%5D%5Borderable%5D=false&columns%5B5%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B5%5D%5Bsearch%5D%5Bregex%5D=false&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&view=table&action=get_table_data HTTP/1.1" 200 1429 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:25] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/?draw=3&columns%5B0%5D%5Bdata%5D=id&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=title&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=description&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=status&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=false&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B4%5D%5Bdata%5D=assignee&columns%5B4%5D%5Bname%5D=&columns%5B4%5D%5Bsearchable%5D=true&columns%5B4%5D%5Borderable%5D=true&columns%5B4%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B4%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B5%5D%5Bdata%5D=&columns%5B5%5D%5Bname%5D=&columns%5B5%5D%5Bsearchable%5D=true&columns%5B5%5D%5Borderable%5D=false&columns%5B5%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B5%5D%5Bsearch%5D%5Bregex%5D=false&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&view=table&action=get_table_data HTTP/1.1" 200 1429 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:25] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/?draw=2&columns%5B0%5D%5Bdata%5D=id&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=title&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=description&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=status&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=false&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B4%5D%5Bdata%5D=assignee&columns%5B4%5D%5Bname%5D=&columns%5B4%5D%5Bsearchable%5D=true&columns%5B4%5D%5Borderable%5D=true&columns%5B4%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B4%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B5%5D%5Bdata%5D=&columns%5B5%5D%5Bname%5D=&columns%5B5%5D%5Bsearchable%5D=true&columns%5B5%5D%5Borderable%5D=false&columns%5B5%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B5%5D%5Bsearch%5D%5Bregex%5D=false&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&view=table&action=get_table_data HTTP/1.1" 200 1429 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:25] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/null HTTP/1.1" 301 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:25] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Not Found: /issues/all/null/ 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:25] WARNING [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/null/ HTTP/1.1" 404 3554 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:46] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/dashboard/email HTTP/1.1" 301 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:46] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Forbidden (Permission denied): /communication/dashboard/email/ ['  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner\n    response = get_response(request)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response\n    response = wrapped_callback(request, *callback_args, **callback_kwargs)\n', '  File "/usr/lib/python3.10/contextlib.py", line 79, in inner\n    return func(*args, **kwds)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view\n    return self.dispatch(request, *args, **kwargs)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper\n    return bound_method(*args, **kwargs)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view\n    return view_func(*args, **kwargs)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper\n    return bound_method(*args, **kwargs)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/axes/decorators.py", line 11, in inner\n    return func(request, *args, **kwargs)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/zango/apps/dynamic_models/views.py", line 83, in dispatch\n    raise PermissionDenied(\n']
+Traceback (most recent call last):
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python3.10/contextlib.py", line 79, in inner
+    return func(*args, **kwds)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/axes/decorators.py", line 11, in inner
+    return func(request, *args, **kwargs)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/zango/apps/dynamic_models/views.py", line 83, in dispatch
+    raise PermissionDenied(
+django.core.exceptions.PermissionDenied: You don't have permission to view this page
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:46] WARNING [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/dashboard/email/ HTTP/1.1" 403 2081 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:46] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/error_pages/css/error403.css HTTP/1.1" 200 1478 
+[public:][15/Feb/2025 12:26:46] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/error_pages/images/upperImg403.svg HTTP/1.1" 200 7982 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:46] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/error_pages/images/Img403.svg HTTP/1.1" 200 1352 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:51] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /logout HTTP/1.1" 301 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:51] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /logout/ HTTP/1.1" 302 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:51] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /login/ HTTP/1.1" 200 8130 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:51] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /login/None HTTP/1.1" 301 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:51] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Not Found: /login/None/ 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:26:51] WARNING [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /login/None/ HTTP/1.1" 404 3539 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:10] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "POST /login/ HTTP/1.1" 302 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:10] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/ HTTP/1.1" 200 171953 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:10] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/?draw=1&columns%5B0%5D%5Bdata%5D=id&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=title&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=description&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=status&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=false&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B4%5D%5Bdata%5D=assignee&columns%5B4%5D%5Bname%5D=&columns%5B4%5D%5Bsearchable%5D=true&columns%5B4%5D%5Borderable%5D=true&columns%5B4%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B4%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B5%5D%5Bdata%5D=&columns%5B5%5D%5Bname%5D=&columns%5B5%5D%5Bsearchable%5D=true&columns%5B5%5D%5Borderable%5D=false&columns%5B5%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B5%5D%5Bsearch%5D%5Bregex%5D=false&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&view=table&action=get_table_data HTTP/1.1" 200 1429 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:10] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/null HTTP/1.1" 301 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:10] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/?draw=2&columns%5B0%5D%5Bdata%5D=id&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=title&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=description&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=status&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=false&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B4%5D%5Bdata%5D=assignee&columns%5B4%5D%5Bname%5D=&columns%5B4%5D%5Bsearchable%5D=true&columns%5B4%5D%5Borderable%5D=true&columns%5B4%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B4%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B5%5D%5Bdata%5D=&columns%5B5%5D%5Bname%5D=&columns%5B5%5D%5Bsearchable%5D=true&columns%5B5%5D%5Borderable%5D=false&columns%5B5%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B5%5D%5Bsearch%5D%5Bregex%5D=false&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&view=table&action=get_table_data HTTP/1.1" 200 1429 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:10] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/?draw=3&columns%5B0%5D%5Bdata%5D=id&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=title&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=description&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=true&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=status&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=false&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B4%5D%5Bdata%5D=assignee&columns%5B4%5D%5Bname%5D=&columns%5B4%5D%5Bsearchable%5D=true&columns%5B4%5D%5Borderable%5D=true&columns%5B4%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B4%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B5%5D%5Bdata%5D=&columns%5B5%5D%5Bname%5D=&columns%5B5%5D%5Bsearchable%5D=true&columns%5B5%5D%5Borderable%5D=false&columns%5B5%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B5%5D%5Bsearch%5D%5Bregex%5D=false&start=0&length=10&search%5Bvalue%5D=&search%5Bregex%5D=false&view=table&action=get_table_data HTTP/1.1" 200 1429 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:10] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Not Found: /issues/all/null/ 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:10] WARNING [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/all/null/ HTTP/1.1" 404 3554 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:16] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/communication/dashboard/email HTTP/1.1" 301 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:16] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Not Found: /issues/communication/dashboard/email/ 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:16] WARNING [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /issues/communication/dashboard/email/ HTTP/1.1" 404 3617 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:25] WARNING [Zango/env/lib/python3.10/site-packages/django/utils/log.py:log_response:241] Forbidden (Permission denied): /communication/dashboard/email/ ['  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner\n    response = get_response(request)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response\n    response = wrapped_callback(request, *callback_args, **callback_kwargs)\n', '  File "/usr/lib/python3.10/contextlib.py", line 79, in inner\n    return func(*args, **kwds)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view\n    return self.dispatch(request, *args, **kwargs)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper\n    return bound_method(*args, **kwargs)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view\n    return view_func(*args, **kwargs)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper\n    return bound_method(*args, **kwargs)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/axes/decorators.py", line 11, in inner\n    return func(request, *args, **kwargs)\n', '  File "/home/santosh/Zango/env/lib/python3.10/site-packages/zango/apps/dynamic_models/views.py", line 83, in dispatch\n    raise PermissionDenied(\n']
+Traceback (most recent call last):
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python3.10/contextlib.py", line 79, in inner
+    return func(*args, **kwds)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/axes/decorators.py", line 11, in inner
+    return func(request, *args, **kwargs)
+  File "/home/santosh/Zango/env/lib/python3.10/site-packages/zango/apps/dynamic_models/views.py", line 83, in dispatch
+    raise PermissionDenied(
+django.core.exceptions.PermissionDenied: You don't have permission to view this page
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:25] WARNING [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/dashboard/email/ HTTP/1.1" 403 2081 
+[public:localhost][15/Feb/2025 12:27:48] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /api/v1/apps/4e2a7b82-6b57-4f46-9bbd-f8cca3b4cd96/packages/?action=config_url&package_name=communication HTTP/1.1" 200 158 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:48] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/configure/?token=MQ:1tjHGu:lzv5oOzJZWxKEzKHeR8MZqS4PRaaaU2fJP_YX15ynBw HTTP/1.1" 200 15325 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:48] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/css/bootstrap/5.3.2/bootstrap.min.css HTTP/1.1" 200 281334 
+[public:][15/Feb/2025 12:27:48] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/css/styles.css HTTP/1.1" 200 8952 
+[public:][15/Feb/2025 12:27:48] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/js/configure.js HTTP/1.1" 200 34083 
+[public:][15/Feb/2025 12:27:48] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/js/popper/2.11.8/popper.min.js HTTP/1.1" 200 36769 
+[public:][15/Feb/2025 12:27:48] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/js/bootstrap/5.3.2/bootstrap.min.js HTTP/1.1" 200 80663 
+[public:][15/Feb/2025 12:27:48] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/js/jquery/3.7.1/jquery.min.js HTTP/1.1" 200 161857 
+[public:][15/Feb/2025 12:27:48] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/js/zfrom_lib.v1.0.35.min.js HTTP/1.1" 200 2816847 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:49] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/configure/api/?action=fetch_configs&token=MQ:1tjHGu:lzv5oOzJZWxKEzKHeR8MZqS4PRaaaU2fJP_YX15ynBw HTTP/1.1" 200 186 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:51] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "POST /communication/configure/api/?action=set_active&token=MQ:1tjHGu:lzv5oOzJZWxKEzKHeR8MZqS4PRaaaU2fJP_YX15ynBw HTTP/1.1" 200 53 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:51] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/configure/?token=MQ:1tjHGu:lzv5oOzJZWxKEzKHeR8MZqS4PRaaaU2fJP_YX15ynBw HTTP/1.1" 200 15325 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:27:51] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/configure/api/?action=fetch_configs&token=MQ:1tjHGu:lzv5oOzJZWxKEzKHeR8MZqS4PRaaaU2fJP_YX15ynBw HTTP/1.1" 200 185 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:29:32] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/email/configure/api/?action=initialize_form&token=MQ:1tjHGu:lzv5oOzJZWxKEzKHeR8MZqS4PRaaaU2fJP_YX15ynBw HTTP/1.1" 200 2903 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:36:04] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "POST /communication/email/configure/api/?action=create_config&token=MQ:1tjHGu:lzv5oOzJZWxKEzKHeR8MZqS4PRaaaU2fJP_YX15ynBw HTTP/1.1" 200 47 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:36:04] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/configure/?token=MQ:1tjHGu:lzv5oOzJZWxKEzKHeR8MZqS4PRaaaU2fJP_YX15ynBw HTTP/1.1" 200 15325 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:36:04] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/css/bootstrap/5.3.2/bootstrap.min.css HTTP/1.1" 304 0 
+[public:][15/Feb/2025 12:36:04] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/js/popper/2.11.8/popper.min.js HTTP/1.1" 304 0 
+[public:][15/Feb/2025 12:36:04] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/js/jquery/3.7.1/jquery.min.js HTTP/1.1" 304 0 
+[public:][15/Feb/2025 12:36:04] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/css/styles.css HTTP/1.1" 304 0 
+[public:][15/Feb/2025 12:36:04] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/js/configure.js HTTP/1.1" 304 0 
+[public:][15/Feb/2025 12:36:04] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/js/bootstrap/5.3.2/bootstrap.min.js HTTP/1.1" 304 0 
+[public:][15/Feb/2025 12:36:04] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /static/workspaces/IssueManagement/packages/communication/js/zfrom_lib.v1.0.35.min.js HTTP/1.1" 304 0 
+[IssueManagement:issuemanagement.com][15/Feb/2025 12:36:04] INFO [Zango/env/lib/python3.10/site-packages/django/core/servers/basehttp.py:log_message:212] "GET /communication/configure/api/?action=fetch_configs&token=MQ:1tjHGu:lzv5oOzJZWxKEzKHeR8MZqS4PRaaaU2fJP_YX15ynBw HTTP/1.1" 200 614 
+[public:][15/Feb/2025 12:41:34] INFO [Zango/env/lib/python3.10/site-packages/django/utils/autoreload.py:trigger_reload:266] /home/santosh/Zango/IssueTrackerApplication/workspaces/IssueManagement/issues/workflow.py changed, reloading. 
+[public:][15/Feb/2025 12:41:35] INFO [Zango/env/lib/python3.10/site-packages/django/utils/autoreload.py:run_with_reloader:668] Watching for file changes with StatReloader 

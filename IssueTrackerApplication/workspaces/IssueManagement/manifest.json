@@ -15,6 +15,10 @@
         {
             "name": "workflow",
             "version": "0.3.2"
+        },
+        {
+            "name": "communication",
+            "version": "0.2.2"
         }
     ]
 }
