@@ -1,29 +1,154 @@
-# Backend assignment repository template
+# Issue Tracker Application
 
-This is a template repository for submitting assignment for the Backend developer internship at Zelthy. All those who are submitting the backend assignment must use this template.
+## Introduction
 
-Assignment link: https://zelthy.com/assignments/backend-intern
+The Issue Tracker Application is a simple yet efficient issue management system built using the Zango framework. It allows users to create, update, assign, and track issues seamlessly.
 
-Submission form: https://forms.gle/tMMQn7ofrpEme88z5
+## Features
 
-### How to use this template?
+### Core Features
 
-1. If you are reading this on GitHub, click the "use this template" dropdown in the top right corner of the page and select "Create a new repository".
-<img width="1470" alt="Screenshot 2025-02-07 at 6 10 26 PM" src="https://github.com/user-attachments/assets/360f44ae-57e8-4c47-b768-cbfd95b3aa0a" />
+- **User Authentication**
+  - User registration and login.
+  - Utilizes Zango's built-in authentication system.
+- **Issue Management**
+  - Create issues with a title, description, status, and assignee.
+  - Status options: `Open`, `In Progress`, and `Resolved`.
+  - Users can update issue statuses.
+  - Timestamp tracking for creation and updates.
+  - Assign issues to specific users.
 
-2. Next you will be redirected to create a new repository page on GitHub with this repository as a template. Fill the repository name and description and click "Create repository".
-<img width="1470" alt="Screenshot 2025-02-07 at 3 09 25 PM" src="https://github.com/user-attachments/assets/17bd7a00-99fb-4ff6-8003-4b96506189f3" />
+## Installation & Setup
 
-3. And thats it! A new repository using this template has been created for you!
+### Prerequisites
 
-### How to submit the assignment?
+Ensure you have the following installed:
 
-1. Clone the repository that you created using the instructions above.
+- **Python 3.8+**
+- **PostgreSQL**
+- **Docker & Docker Compose** (for containerization)
 
-2. Add and commit your changes to that repository.
+### Clone the Repository
 
-3. Push the changes to github.
+```bash
+git clone https://github.com/Raju1422/Zango_Issue_Tracker_Application---Assignment.git
+cd Zango_Issue_Tracker_Application---Assignment
+```
 
-4. Go to the submission form and fill the details and submit the assignment.
+### Setting Up a Virtual Environment
 
-## Happy coding!
+```bash
+python -m venv env
+source env/bin/activate  # On Windows use `env\Scripts\activate`
+```
+
+### Install Zango
+
+```bash
+pip install Zango
+```
+
+### PostgreSQL Database Setup
+
+- **Pull the Postgres Docker Image:**
+
+  ```bash
+  docker pull postgres
+  ```
+
+- **Create a Docker Volume:**
+
+  ```bash
+  docker volume create postgres_data
+  ```
+
+- **Run the Postgres Docker Container:**
+
+  ```bash
+  docker run --name postgres_container -e POSTGRES_PASSWORD=mypassword -d -p 5432:5432 -v postgres_data:/var/lib/postgresql/data postgres
+  ```
+
+### Redis setup
+
+Redis is used as a broker by Celery workers. Use the steps below to run Redis on your local machine:
+
+- **Start Redis inside a Docker container on port 6379:**
+
+  ```bash
+  docker run --name zango_redis -d -p 6379:6379 redis
+  ```
+
+### Starting the Celery Worker and Celery Beat
+
+- **To start the Celery worker:**
+
+  ```bash
+  celery -A IssueTrackerApplication worker -l INFO
+  ```
+
+- **To start Celery Beat:**
+
+  ```bash
+  celery -A IssueTrackerApplication beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
+  ```
+
+### Running the Development Server
+
+1. **Navigate to your project directory:**
+
+   ```bash
+   cd IssueTrackerApplication
+   ```
+
+2. **Start the development server:**
+
+   ```bash
+   python manage.py runserver
+   ```
+
+   This command will start the development server, and you'll see output indicating that the server is running. By default, the server will be available at [http://localhost:8000/](http://localhost:8000/).
+
+### Access Your Project's App Panel
+
+To access the app panel, go to [http://localhost:8000/platform](http://localhost:8000/platform) and enter the platform username and password that you entered while creating the project.
+
+```bash
+username: santosh@gmail.com
+password: Sanju@169
+```
+
+### Setting App Domain
+
+1. **Open a new terminal window.**
+2. **Run the below command to open `/etc/hosts` file on macOS or Linux:**
+
+   ```bash
+   sudo nano /etc/hosts
+   ```
+
+3. **Paste the following line in the file:**
+
+   ```bash
+   0.0.0.0  issuemanagement.com
+   ```
+
+4. **Save and exit the editor.**
+
+### Creating a User
+
+- Navigate to `apps/IssueManagement/user_management` and click on `New User` to create a new user.
+
+### Accessing IssueManagement App
+
+- **Enter the following URL in your browser:**
+
+  ```bash
+  http://issuemanagement.com:8000/issues/all/
+  ```
+
+- **Enter your credentials that you created in user management.**
+- **Perform actions like creating an issue and updating the status of an issue, etc.**
+
+### NOTE
+
+- The application has been **Dockerized**, but currently, the **Celery container is throwing an error**.
